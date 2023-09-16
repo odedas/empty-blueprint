@@ -1,0 +1,27 @@
+{
+  "name": "empty-blueprint",
+  "version": "1.0.0",
+  "description": "empty project template with initial setup for better coding using vscode and eslint",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/odedas/empty-blueprint.git"
+  },
+  "author": "oded assaraf",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.40.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "2.8.8"
+  }
+}
