@@ -1,6 +1,12 @@
 # Empty blueprint starter with eslint setup
-This is an empty project template with initial setup for better coding using vscode and eslint.\
-Also can use as a starter for existing code to refactor
+This is an empty project template with initial setup for better coding using vscode and eslint.  
+Also can use as a starter for existing code to refactor  
+The code in *index.js* is a node script to read data from a CSV file and load it into a DynamoDB table using **AWS SDK for JavaScript v3 (SDK v3)** 
+# Usage
+you can use this code in different ways:
+1. [Use the script file along with the downloades basic blueprint](#usescript) to create new project with eslint setup
+2. Follow the general steps in the readme file in order to refactor new code
+
 ## 🛠️ General Setup
 ```sh
 mkdir try
@@ -43,7 +49,7 @@ npx eslint --init
   "extends": ["plugin:prettier/recommended"]
 }
 ```
-Add **rules** in .eslintrc.\
+Add **rules** in .eslintrc.  
 Add **.prettierrc** with your code style,
 for example
 ```JS
@@ -56,7 +62,7 @@ for example
 }
 ```
 ### vscode setup
-Add Code Actions on Save in vscode\
+Add Code Actions on Save in vscode  
 click **cmd+shift+p** -> open preference setting json and add
 ```JSON
 {
@@ -82,13 +88,13 @@ $ npm audit fix --force
 
 >😊 happy coding
 
-
+<a name="usescript"></a>
 # USE setup_blueprint.sh Script
 To make the script available from anywhere on your Mac, you can follow these steps:
 
-First download the blueprint project\
-you can clone it from https://github.com/odedas/empty-blueprint.git\
-Update the **$SOURCE_DIR** in the script to the cloned directory\
+First download the blueprint project  
+you can clone it from https://github.com/odedas/empty-blueprint.git  
+Update the **$SOURCE_DIR** in the script to the cloned directory  
 Move the Script to a Directory in Your PATH: The simplest way is to move the script to a directory that's already in your **PATH**, such as **/usr/local/bin**.
 
 ```sh
