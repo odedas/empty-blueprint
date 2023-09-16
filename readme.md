@@ -87,8 +87,8 @@ $ npm audit fix --force
 To make the script available from anywhere on your Mac, you can follow these steps:
 
 First download the blueprint project\
-you can clone it from ()\
-update the **$SOURCE_DIR** in the script to the cloned dir\
+you can clone it from https://github.com/odedas/empty-blueprint.git\
+Update the **$SOURCE_DIR** in the script to the cloned directory\
 Move the Script to a Directory in Your PATH: The simplest way is to move the script to a directory that's already in your **PATH**, such as **/usr/local/bin**.
 
 ```sh
