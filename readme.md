@@ -4,7 +4,7 @@ Also can use as a starter for existing code to refactor
 The code in *index.js* is a node script to read data from a CSV file and load it into a DynamoDB table using **AWS SDK for JavaScript v3 (SDK v3)** 
 # Usage
 you can use this code in different ways:
-1. [Use the script file along with the downloades basic blueprint](#usescript) to create new project with eslint setup
+1. [Use the script file along with the downloaded basic blueprint](#usescript) to create new project with eslint setup
 2. Follow the general steps in the readme file in order to refactor new code
 
 ## 🛠️ General Setup
