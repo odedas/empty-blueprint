@@ -5,7 +5,9 @@ const { DynamoDBClient, ScanCommand, BatchWriteItemCommand } = require('@aws-sdk
 const { marshall, unmarshall } = require('@aws-sdk/util-dynamodb');
 
 const REGION = 'eu-west-1';
+// eslint-disable-next-line no-undef
 const tableName = process.env.TABLE_NAME;
+// eslint-disable-next-line no-undef
 const fileName = process.env.FILE_NAME;
 
 const dbClient = new DynamoDBClient({ region: REGION });

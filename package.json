@@ -5,12 +5,12 @@
   "author": "oded assaraf",
   "keywords": ["@aws-sdk","AWS SDK v3 packages"],
   "license": "ISC",
-  "main": "bin/start.js",
+  "main": "index.js",
   "engines": {
     "node": ">=16.13"
   },
   "scripts": {
-    "start": "node bin/start",
+    "start": "src/index.js",
     "watch": "nodemon bin/start",
     "test": "jest",
     "test:unit": "nyc --require --report-dir ./coverage/unit mocha ./test/unit --recursive --exit",
