@@ -1,32 +1,45 @@
 {
   "name": "empty-blueprint",
-  "version": "1.0.0",
   "description": "empty project template with initial setup for better coding using vscode and eslint",
-  "main": "index.js",
+  "version": "1.0.0",
+  "author": "oded assaraf",
+  "keywords": ["@aws-sdk","AWS SDK v3 packages"],
+  "license": "ISC",
+  "main": "bin/start.js",
+  "engines": {
+    "node": ">=16.13"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node bin/start",
+    "watch": "nodemon bin/start",
+    "test": "jest",
+    "test:unit": "nyc --require --report-dir ./coverage/unit mocha ./test/unit --recursive --exit",
+    "test:e2e": "nyc --require --report-dir ./coverage/e2e mocha ./test/e2e/index.js --recursive --exit",
+    "test:unit-debug": "export $(cat .env | xargs) && mocha --require --inspect-brk=0.0.0.0:$PORT_DEBUG ./test/unit --recursive --exit",
+    "lintfix": "node_modules/.bin/eslint . --fix",
+    "testlint": "node_modules/.bin/eslint ."
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/odedas/empty-blueprint.git"
   },
-  "author": "oded assaraf",
-  "keywords": ["@aws-sdk","AWS SDK v3 packages"],
-  "license": "ISC",
+
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "^3.410.0",
-    "@aws-sdk/lib-dynamodb": "^3.410.0",
-    "@aws-sdk/util-dynamodb": "^3.410.0",
+    "@aws-sdk/client-dynamodb": "^3.421.0",
+    "@aws-sdk/lib-dynamodb": "^3.421.0",
+    "@aws-sdk/util-dynamodb": "^3.421.0",
     "csv-parser": "^3.0.0",
     "dotenv": "^16.3.1"
   },
   "devDependencies": {
-    "eslint": "^8.40.0",
+    "eslint": "^8.50.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "2.8.8"
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-prettier": "^5.0.0",
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.1",
+    "prettier": "3.0.3",
+    "supertest": "^6.3.3"
   }
 }

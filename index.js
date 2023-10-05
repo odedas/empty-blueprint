@@ -1,5 +1,4 @@
 require('dotenv').config();
-
 const fs = require('fs');
 const csvParser = require('csv-parser');
 const { DynamoDBClient, ScanCommand, BatchWriteItemCommand } = require('@aws-sdk/client-dynamodb');
@@ -80,5 +79,13 @@ async function loadCSVDataToDynamoDB() {
     console.error(error.message);
   }
 }
+
+module.exports = {
+  deleteAllItemsFromDynamoDB,
+  writeToDynamoDB,
+  logCurrentItemsInTable,
+  loadCSVDataToDynamoDB
+};
+
 // Call the function to start the data loading process
 loadCSVDataToDynamoDB();

@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# CMD="npm run test" # Command that runs your tests
+protected_branch='master'
+
+# Check if we actually have commits to push
+commits=`git log @{u}..`
+if [ -z "$commits" ]; then
+    exit 0
+fi
+
+# If the following text is found anywhere in the source for HEAD, we will prevent pushing
+dont_push_flag="localhost"
+flag_found=`git grep  --color "$dont_push_flag" -- '*.js' HEAD`
+if [ -n "$flag_found" ]
+then
+    # Display which commit the first occurence of the flag was found and exit failure
+    commit=`git log --pretty=format:'%Cred%h%Creset' -S "$dont_push_flag" | tail -n1`
+    echo "Found $flag_found, first occurence was in $commit, not pushing"
+    exit 1
+fi
+# if the tests fail it will prevent pushing
+current_branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
+# if [[ $current_branch = $protected_branch ]]; then
+#     $CMD
+#     RESULT=$?
+#     if [ $RESULT -ne 0 ]; then
+#         echo "failed $CMD"
+#         exit 1
+#     fi
+# fi
+exit 0
+

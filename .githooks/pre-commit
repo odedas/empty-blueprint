@@ -1,0 +1,63 @@
+#!/bin/bash
+# Test code
+npm run testlint # Command that runs your tests
+LINTER_EXIT_CODE=$?
+# check linter exit code
+if [ $LINTER_EXIT_CODE -ne 0 ]; then
+    echo "No, no, no! fix those lint errors first..😠"
+    exit 1
+else
+    echo "lint all good..👍"
+fi
+
+# run tests related to staged files
+echo "Running Tests ... 🧪🧪🧪"
+./node_modules/.bin/jest -i --coverage
+JEST_EXIT_CODE=$?
+
+# check jest exit code
+if [ $JEST_EXIT_CODE -ne 0 ]; then
+    echo "Please you can do better than this..🙏🙏🙏"
+    exit 1
+else
+    echo "test all good..👍"
+fi
+
+# Set package.json version based on month.
+function getVersion() {
+    year=$1
+    month=$2
+    let 'major = +year - 21'
+    let 'minor = +year'
+    let 'subminor = +month'
+    echo "$major.$minor.$subminor"
+}
+year=`date +%y`
+month=`date +%m`
+month=`echo $((10#$month))`
+version=`getVersion $year $month`
+echo "$version"
+node -e "
+const p=require('./package.json');
+const del='.';
+const m=p.version.split(del)[2];
+if(m !== '$version'.split(del)[2]) {
+    p.version='$version';
+}
+fs.writeFileSync('package.json', JSON.stringify(p, null, 2)+os.EOL);
+"
+git add -A -- package.json
+
+
+# Set CHANGELOG.md info
+changelog=`cat CHANGELOG.md`
+case $changelog in
+   *"## version $version"*) cp CHANGELOG.md CHANGELOG.txt
+   git add -A -- CHANGELOG.txt ;;
+    *) cat CHANGELOG.md | sed 's/~~~~~//g'
+    echo "~~~~~## version $version [`date +%d/%m/%Y`]
+    " >> CHANGELOG.md
+    echo -e "----> Go fill out CHANGELOG.md and commit"
+    exit 1 ;;
+esac
+exit 0;
